@@ -28,5 +28,9 @@ namespace ConsoleApp1.Entities
                 return AnnualIncome * 0.16;
             }
         }
+        public override string ToString()
+        {
+            return  Name + " $ " + Tax();
+        }
     }
 }

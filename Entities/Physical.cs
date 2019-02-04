@@ -36,5 +36,9 @@ namespace ConsoleApp1.Entities
             }
             return taxAI-taxHS;
         }
+        public override string ToString()
+        {
+            return Name + " $ " + Tax();
+        }
     }
 }
