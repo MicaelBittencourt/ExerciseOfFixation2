@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace ConsoleApp1.Entities
@@ -19,7 +20,7 @@ namespace ConsoleApp1.Entities
 
         public override double Tax()
         {
-            if(NumberEmployed < 10)
+            if(NumberEmployed > 10)
             {
                 return AnnualIncome * 0.14;
             }
@@ -30,7 +31,7 @@ namespace ConsoleApp1.Entities
         }
         public override string ToString()
         {
-            return  Name + " $ " + Tax();
+            return  Name + " $ " + Tax().ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }

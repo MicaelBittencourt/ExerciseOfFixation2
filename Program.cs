@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using ConsoleApp1.Entities;
 namespace ConsoleApp1
 {
@@ -20,11 +21,11 @@ namespace ConsoleApp1
                 Console.Write("Name: ");
                 string pName = Console.ReadLine();
                 Console.Write("Anual Income: ");
-                double aI = double.Parse(Console.ReadLine());
+                double aI = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                 if (iOrC == 'i')
                 {
                     Console.Write("Health expenditures: ");
-                    double hE = double.Parse(Console.ReadLine());
+                    double hE = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                     people.Add(new Physical(pName, aI, hE));
                 }
                 else
@@ -33,16 +34,16 @@ namespace ConsoleApp1
                     int nE = int.Parse(Console.ReadLine());
                     people.Add(new Legal(pName, aI, nE));
                 }
-
+                
             }
             Console.WriteLine("TAXES PAID: ");
             foreach (People per in people)
             {
                 Console.WriteLine(per.ToString());
-
+                sum += per.Tax();
             }
 
-            Console.WriteLine("TOTAL TAXES: " + sum);
+            Console.WriteLine("TOTAL TAXES: " + sum.ToString("F2", CultureInfo.InvariantCulture));
         }
     }
 }

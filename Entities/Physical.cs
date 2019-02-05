@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace ConsoleApp1.Entities
@@ -27,10 +28,10 @@ namespace ConsoleApp1.Entities
             }
             else
             {
-                taxAI = AnnualIncome * 0.20;
+                taxAI = AnnualIncome * 0.25;
             }
 
-            if(HealthSpending < 0)
+            if(HealthSpending != 0)
             {
                 taxHS = HealthSpending * 0.50;
             }
@@ -38,7 +39,7 @@ namespace ConsoleApp1.Entities
         }
         public override string ToString()
         {
-            return Name + " $ " + Tax();
+            return Name + " $ " + Tax().ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }
